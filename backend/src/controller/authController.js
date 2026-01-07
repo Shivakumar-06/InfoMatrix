@@ -36,10 +36,11 @@ const clientLogin = async (req, res) => {
     const { email, password } = req.body;
 
     const { data: clients } = await supabase
-      .from("clients")
-      .select("id, name, email, password")
-      .eq("email", email)
-      .limit(1);
+  .from("clients")
+  .select("id, name, email, password")
+  .eq("email", email)
+  .single();
+
 
     const client = clients?.[0];
 
