@@ -15,9 +15,7 @@ import axiosClient from "../../api/axiosClient";
 import { toast } from "sonner";
 import { REPORT_META, GROUPING_ENABLED } from "../../service/reportMeta";
 
-/* ---------------------------------- */
 /* Utilities                          */
-/* ---------------------------------- */
 
 const normalizeDate = (d: string) => {
   if (!d) return "";
