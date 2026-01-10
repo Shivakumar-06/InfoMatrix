@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://infomatrix.vercel.app/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://infomatrix.up.railway.app/",
   headers: { "Content-Type": "application/json" },
 });
 
