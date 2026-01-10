@@ -70,6 +70,15 @@ app.use('/api/download', async (req,res,next)=>{
   return module.default(req,res,next);
 })
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
+
 
 // Checking points
 app.listen(port, () => {
