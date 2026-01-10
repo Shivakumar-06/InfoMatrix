@@ -37,7 +37,7 @@ const allReports = async (req, res) => {
 const preview = async (req, res) => {
   try {
     const data = await previewService(req.params.id);
-    return res.json(data);
+    return res.json(data); 
   } catch (err) {
     console.error("Preview controller error:", err);
 
