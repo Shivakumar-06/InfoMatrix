@@ -258,7 +258,7 @@ const ClientMIS = () => {
       setOpenGroups({});
 
       const res = await axiosClient.get(
-        `/reports/published?start_date=${startDate}&end_date=${endDate}`
+        `api/reports/published?start_date=${startDate}&end_date=${endDate}`
       );
 
       const result = res.data.reports || [];

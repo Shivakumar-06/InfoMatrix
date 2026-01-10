@@ -89,7 +89,7 @@ export default function Template() {
   const fetchTemplates = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await axiosClient.get("/templates");
+      const res = await axiosClient.get("api/templates");
       setTemplateList(res.data.templates || []);
     } catch (err) {
       console.error("Failed to fetch templates:", err);
@@ -138,7 +138,7 @@ export default function Template() {
     }
 
     try {
-      await axiosClient.post("/templates", {
+      await axiosClient.post("api/templates", {
         template_name: templateName,
         status,
         types: selectedTypes,
@@ -187,7 +187,7 @@ export default function Template() {
   const handleDelete = useCallback(
     async (tpl: TemplateItem) => {
       try {
-        await axiosClient.delete(`/templates/${tpl.id}`);
+        await axiosClient.delete(`api/templates/${tpl.id}`);
         fetchTemplates();
         toast.success("Template deleted successfully");
       } catch {

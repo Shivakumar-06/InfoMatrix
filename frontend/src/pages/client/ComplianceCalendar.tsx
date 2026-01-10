@@ -72,7 +72,7 @@ const ClientCompliance = () => {
   const fetchSummary = async () => {
     try {
       const { data } = await axiosClient.get(
-        "/compliances/client/summary"
+        "api/compliances/client/summary"
       );
       setSummary(data);
     } catch {
@@ -82,7 +82,7 @@ const ClientCompliance = () => {
 
   const fetchCompliances = async () => {
     try {
-      const { data } = await axiosClient.get("/compliances/client");
+      const { data } = await axiosClient.get("api/compliances/client");
       setCompliance(data || []);
     } catch {
       toast.error("Failed to load compliances");

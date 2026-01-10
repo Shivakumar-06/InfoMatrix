@@ -75,9 +75,9 @@ const Sync = () => {
     setLoadingReports(true);
     try {
       const [clientsRes, reportsRes, templatesRes] = await Promise.all([
-        axiosClient.get("/admin/clients"),
-        axiosClient.get("/reports/all-reports"),
-        axiosClient.get("/templates"),
+        axiosClient.get("api/admin/clients"),
+        axiosClient.get("api/reports/all-reports"),
+        axiosClient.get("api/templates"),
       ]);
 
       setClients(clientsRes.data.clients || []);
@@ -105,7 +105,7 @@ const Sync = () => {
     try {
       setLoading(true);
 
-      await axiosClient.post("/reports/sync", {
+      await axiosClient.post("api/reports/sync", {
         client_id: selectedClient,
         template_id: selectedTemplate,
         start_date: startDate,
@@ -138,7 +138,7 @@ const Sync = () => {
     if (!reportId) return;
 
     try {
-      await axiosClient.delete(`/reports/${reportId}`);
+      await axiosClient.delete(`api/reports/${reportId}`);
       setDialogOpen(false);
       setReportId(null);
       await fetchReports();

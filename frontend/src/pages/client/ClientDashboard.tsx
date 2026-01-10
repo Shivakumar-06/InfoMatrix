@@ -101,9 +101,9 @@ const ClientDashboard = () => {
       try {
         // run all three requests in parallel
         const [summaryRes, reportsRes, chartsRes] = await Promise.all([
-          axiosClient.get("/client/dashboard", { signal }),
-          axiosClient.get("/client/reports", { signal }),
-          axiosClient.get("/client/charts", { signal }),
+          axiosClient.get("api/client/dashboard", { signal }),
+          axiosClient.get("api/client/reports", { signal }),
+          axiosClient.get("api/client/charts", { signal }),
         ]);
 
         if (signal.aborted) return;

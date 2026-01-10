@@ -118,19 +118,19 @@ const Compliance = () => {
   // API calls
 
   const fetchDataSummary = useCallback(async () => {
-    const { data } = await axiosClient.get("/compliances/summary");
+    const { data } = await axiosClient.get("api/compliances/summary");
     setSummary(data);
   }, []);
 
   const fetchClients = useCallback(async () => {
-      const res = await axiosClient.get("/admin/clients");
+      const res = await axiosClient.get("api/admin/clients");
       setClient(res.data.clients);
   }, []);
 
   const fetchComplianceTypes = useCallback(async () => {
    
     
-      const res = await axiosClient.get("/compliance-types/all");
+      const res = await axiosClient.get("api/compliance-types/all");
       setComplianceType(res.data);
     
   }, []);
@@ -138,7 +138,7 @@ const Compliance = () => {
   const fetchCompliances = useCallback(async () => {
     setLoadingReports(true);
     try {
-      const res = await axiosClient.get("/compliances/all");
+      const res = await axiosClient.get("api/compliances/all");
       setCompliance(res.data);
     } finally {
       setLoadingReports(false);
@@ -154,7 +154,7 @@ const Compliance = () => {
     }
 
     try {
-      await axiosClient.post("/compliances/create", {
+      await axiosClient.post("api/compliances/create", {
         title,
         client_id: selectedClientId,
         compliance_type_id: type,
@@ -187,7 +187,7 @@ const Compliance = () => {
     if (!editingCompliance) return;
 
     try {
-      await axiosClient.put(`/compliances/${editingCompliance.id}/update`, {
+      await axiosClient.put(`api/compliances/${editingCompliance.id}/update`, {
         title,
         client_id: selectedClientId,
         compliance_type_id: type,
@@ -221,7 +221,7 @@ const Compliance = () => {
     if (!selectedCompliance) return;
 
     try {
-      await axiosClient.delete(`/compliances/${selectedCompliance.id}/delete`);
+      await axiosClient.delete(`api/compliances/${selectedCompliance.id}/delete`);
       await Promise.all([fetchCompliances(), fetchDataSummary()]);
       setDeleteDialogOpen(false);
       toast.success("Compliance deleted successfully");

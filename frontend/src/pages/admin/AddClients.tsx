@@ -87,7 +87,7 @@ const Clients = () => {
   const fetchClients = useCallback(async () => {
     setLoadingClients(true);
     try {
-      const res = await axiosClient.get("/admin/clients");
+      const res = await axiosClient.get("api/admin/clients");
       setClients(res.data.clients);
     } catch (err) {
       console.error("Failed to load clients:", err);
@@ -106,7 +106,7 @@ const Clients = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axiosClient.post("/admin/add-client", form);
+      const res = await axiosClient.post("api/admin/add-client", form);
       const { authUrl } = res.data;
 
       if (authUrl) {
@@ -143,7 +143,7 @@ const Clients = () => {
   const handleDeleteClient = async () => {
     if (!deleteClientId) return;
     try {
-      await axiosClient.delete(`/admin/clients/${deleteClientId}`);
+      await axiosClient.delete(`api/admin/clients/${deleteClientId}`);
       setDialogOpen(false);
       setDeleteClientId(null);
       setDeleteClientName(null);

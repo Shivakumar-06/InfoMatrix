@@ -79,7 +79,7 @@ const Reports = () => {
       setNoData(false);
 
       try {
-        const res = await axiosClient.get("/reports/all-reports");
+        const res = await axiosClient.get("api/reports/all-reports");
         const all = res.data.reports || [];
 
         const s = normalizeDate(startDate);
@@ -195,10 +195,7 @@ const Reports = () => {
     GROUPING_ENABLED.includes(k)
   );
 
-  /* ---------------------------------- */
   /* Render                             */
-  /* ---------------------------------- */
-
   return (
     <div className="max-w-4xl mx-auto space-y-10 mt-2">
       {/* Breadcrumb */}
