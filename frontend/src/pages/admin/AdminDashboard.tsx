@@ -85,22 +85,22 @@ const AdminDashboard = () => {
   // API Calls
 
   const fetchDashboardSummary = useCallback(async () => {
-    const { data } = await axiosClient.get("api/dashboard/summary");
+    const { data } = await axiosClient.get("/dashboard/summary");
     setSummary(data);
   }, []);
 
   const fetchRecentReports = useCallback(async () => {
-    const { data } = await axiosClient.get("api/dashboard/recent-report");
+    const { data } = await axiosClient.get("/dashboard/recent-report");
     setRecentReports(data.reports || []);
   }, []);
 
   const fetchPendingActions = useCallback(async () => {
-    const { data } = await axiosClient.get("api/dashboard/pending-actions");
+    const { data } = await axiosClient.get("/dashboard/pending-actions");
     setPendingReports(data.pendingReports || []);
   }, []);
 
   const fetchDashboardCharts = useCallback(async () => {
-    const { data } = await axiosClient.get("api/dashboard/charts");
+    const { data } = await axiosClient.get("/dashboard/charts");
 
     if (!data?.charts) return;
 
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
       if (startDate) params.start_date = startDate;
       if (endDate) params.end_date = endDate;
 
-      const { data } = await axiosClient.get("api/dashboard/reports", { params });
+      const { data } = await axiosClient.get("/dashboard/reports", { params });
 
       if (!data?.reports?.length) {
         setNoReportsMessage("No reports found");

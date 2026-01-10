@@ -57,7 +57,7 @@ export default function Types() {
   const fetchTypes = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await axiosClient.get("api/compliance-types/all");
+      const res = await axiosClient.get("/compliance-types/all");
       setTypes(res.data || []);
     } catch {
       console.log("Failed to load types");
@@ -90,12 +90,12 @@ export default function Types() {
     try {
       if (editingType) {
         await axiosClient.put(
-          `api/compliance-types/${editingType.id}/update`,
+          `/compliance-types/${editingType.id}/update`,
           { name, description }
         );
         toast.success("Type updated");
       } else {
-        await axiosClient.post("api/compliance-types/create", {
+        await axiosClient.post("/compliance-types/create", {
           name,
           description,
         });
@@ -119,7 +119,7 @@ export default function Types() {
 
     try {
       await axiosClient.delete(
-        `api/compliance-types/${editingType.id}/delete`
+        `/compliance-types/${editingType.id}/delete`
       );
       toast.success("Type deleted");
       fetchTypes();
