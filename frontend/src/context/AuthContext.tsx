@@ -51,8 +51,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const response =
         email === import.meta.env.VITE_ADMIN_EMAIL
-          ? await axiosClient.post("/auth/admin-login", { email, password })
-          : await axiosClient.post("/auth/client-login", { email, password });
+          ? await axiosClient.post("api/auth/admin-login", { email, password })
+          : await axiosClient.post("api/auth/client-login", { email, password });
 
       const { user, token } = response.data;
 
