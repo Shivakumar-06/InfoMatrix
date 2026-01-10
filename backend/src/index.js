@@ -70,10 +70,12 @@ app.use('/api/download', async (req,res,next)=>{
   return module.default(req,res,next);
 })
 
+// to check site is work or not
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
 
+// status of site
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
