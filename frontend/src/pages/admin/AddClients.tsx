@@ -106,7 +106,7 @@ const Clients = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axiosClient.post("api/admin/add-client", form);
+      const res = await axiosClient.post("/admin/add-client", form);
       const { authUrl } = res.data;
 
       if (authUrl) {
